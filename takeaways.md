@@ -1,1 +1,3 @@
 - I was using a third party company that made esp32 dev boards.  I had conneciton issues with the lcd display so I had to buy the espressif dev kit and it worked.
+- debugging remotely is only possible if you know for sure that everything is wired up correctly
+- logging is your friend when remote debugging firmware

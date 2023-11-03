@@ -4,6 +4,7 @@
  */
 
 #include "uartutil.h"
+#include "lcdutil.h"
 #include "driver/uart.h"
 #include "driver/gpio.h"
 #include "sdkconfig.h"
@@ -38,6 +39,7 @@ void BNEchoTask(void *) {
         if (len) {
             data[len] = '\0';
             ESP_LOGI(TAG, "Recv str: %s", (char *) data);
+			BNLcdPrint((const char *) data);
         }
     }
 }
