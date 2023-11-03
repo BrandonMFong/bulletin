@@ -1,6 +1,3 @@
 # Bulletin
 
-## challenges
-- Finding the right pinout schematic for the board I got from amazon
-- debugging remotely via ssh
-
+https://docs.espressif.com/projects/esp-idf/en/latest/esp32/hw-reference/esp32/user-guide-devkitm-1.html
