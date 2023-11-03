@@ -46,7 +46,7 @@
 #define ECHO_UART_BAUD_RATE     115200
 #define ECHO_TASK_STACK_SIZE    2048
 
-static const char *TAG = "bulletin";
+#define TAG "bulletin"
 
 #define BUF_SIZE (1024)
 
