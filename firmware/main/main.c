@@ -29,8 +29,8 @@
 //////////////////// Please update the following configuration according to your LCD spec //////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #define EXAMPLE_LCD_PIXEL_CLOCK_HZ    (400 * 1000)
-#define EXAMPLE_PIN_NUM_SDA           3
-#define EXAMPLE_PIN_NUM_SCL           4
+#define EXAMPLE_PIN_NUM_SDA           21
+#define EXAMPLE_PIN_NUM_SCL           22
 #define EXAMPLE_PIN_NUM_RST           -1
 #define EXAMPLE_I2C_HW_ADDR           0x3C
 
@@ -54,8 +54,8 @@
  * - Pin assignment: see defines below (See Kconfig)
  */
 
-#define ECHO_TEST_TXD 17
-#define ECHO_TEST_RXD 16
+#define ECHO_TEST_TXD 19
+#define ECHO_TEST_RXD 25
 #define ECHO_TEST_RTS 0
 #define ECHO_TEST_CTS 0
 
@@ -201,6 +201,6 @@ void lcd_init(void)
 
 void app_main(void) 
 {
-	//lcd_init();
+	lcd_init();
     xTaskCreate(echo_task, "uart_echo_task", ECHO_TASK_STACK_SIZE, NULL, 10, NULL);
 }
