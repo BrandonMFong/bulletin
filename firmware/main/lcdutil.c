@@ -16,6 +16,7 @@
 #include "esp_lcd_panel_vendor.h"
 
 lv_disp_t * _lvDisplay = NULL;
+lv_obj_t * _label = NULL;
 
 void example_lvgl_demo_ui(lv_disp_t *disp) {
     lv_obj_t *scr = lv_disp_get_scr_act(disp);
@@ -102,24 +103,26 @@ void lcd_init(void) {
     /* Rotation of the screen */
     lv_disp_set_rotation(_lvDisplay, LV_DISP_ROT_NONE);
 
+	lv_obj_t * scr = lv_disp_get_scr_act(_lvDisplay);
+	_label = lv_label_create(scr);
+
     ESP_LOGI(TAG, "Display LVGL Scroll Text");
+
     // Lock the mutex due to the LVGL APIs are not thread-safe
 	BNLcdPrint("...");
 }
 
-int BNLcdPrint(const char * line) {
+int BNLcdPrint(const char * text) {
     if (lvgl_port_lock(0)) {
-		lv_obj_t * scr = lv_disp_get_scr_act(_lvDisplay);
-		lv_obj_t * label = lv_label_create(scr);
-		lv_label_set_long_mode(label, LV_LABEL_LONG_SCROLL_CIRCULAR); /* Circular scroll */
-		lv_label_set_text(label, line);
+		lv_label_set_long_mode(_label, LV_LABEL_LONG_SCROLL_CIRCULAR); /* Circular scroll */
+		lv_label_set_text(_label, text);
 		
 		/* Size of the screen (if you use rotation 90 or 270, please set disp->driver->ver_res) */
-		lv_obj_set_width(label, _lvDisplay->driver->hor_res);
-		lv_obj_align(label, LV_ALIGN_TOP_MID, 0, 0);
+		lv_obj_set_width(_label, _lvDisplay->driver->hor_res);
+		lv_obj_align(_label, LV_ALIGN_TOP_MID, 0, 0);
 
         // Release the mutex
-    	ESP_LOGI(TAG, "printing: %s", line);
+    	ESP_LOGI(TAG, "printing: %s", text);
         lvgl_port_unlock();
     }
 
