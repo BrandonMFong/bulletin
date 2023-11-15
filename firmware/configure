@@ -1,0 +1,6 @@
+#!/bin/bash
+
+if [ ! -d esp-idf ]; then
+	git clone --depth 1 --branch v4.4.6 git@github.com:espressif/esp-idf.git;
+fi
+

@@ -39,6 +39,7 @@ void BNEchoTask(void *) {
         if (len) {
             data[len] = '\0';
             ESP_LOGI(TAG, "Recv str: %s", (char *) data);
+            ESP_LOGI(TAG, "size: %d", len);
 			BNLcdPrint((const char *) data);
         }
     }
