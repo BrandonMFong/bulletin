@@ -2,7 +2,6 @@
 .PHONY: build
 
 setup:
-	. ./esp-idf/export.sh
 
 build:
 	idf.py build

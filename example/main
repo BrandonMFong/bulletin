@@ -1,0 +1,19 @@
+#!/usr/local/bin/python3
+#
+
+import serial
+
+f = open('lyrics.txt', 'r')
+lines = f.readlines()
+
+ser = serial.Serial(port='/dev/ttyUSB0', baudrate=115200)
+
+try:
+    for line in lines:
+        ser.write(str.encode(line.strip()))
+        input("{}".format(line.strip()))
+except KeyboardInterrupt: 
+    print("\ncancelled")
+    
+ser.close()
+
